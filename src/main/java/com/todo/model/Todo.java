@@ -3,11 +3,13 @@ package com.todo.model;
 import java.time.Instant;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import lombok.Data;
 
 @Data
+@Entity
 @Table(name="todo")
 public class Todo extends AbstractEntity{
 	
