@@ -21,11 +21,11 @@ public class TodoValidator {
 
 		}
 		
-		if(StringUtils.hasLength(dto.getLibelleTodo())) {
+		if(!StringUtils.hasLength(dto.getLibelleTodo())) {
 			errors.add("Veillez renseigner le libelle");
 		}
 		
-		if(StringUtils.hasLength(dto.getDescriptionTodo())) {
+		if(!StringUtils.hasLength(dto.getDescriptionTodo())) {
 			errors.add("Veillez renseigner la description");
 		}
 		

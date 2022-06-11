@@ -26,7 +26,6 @@ public class TodoDto {
 		if(todo == null) {
 			return null;
 		}
-		
 		return TodoDto.builder()
 				.id(todo.getId())
 				.libelleTodo(todo.getLibelleTodo())
@@ -41,11 +40,12 @@ public class TodoDto {
 			return null;
 		}
 		
+
 		Todo todo = new Todo();
-		todo.setId(dto.getId());
-		todo.setLibelleTodo(todo.getLibelleTodo());
-		todo.setDescriptionTodo(todo.getDescriptionTodo());
-		todo.setDateTodo(todo.getDateTodo());
+		todo.setId(20);
+		todo.setLibelleTodo(dto.getLibelleTodo());
+		todo.setDescriptionTodo(dto.getDescriptionTodo());
+		todo.setDateTodo(dto.getDateTodo());		
 		
 		return todo;
 	}

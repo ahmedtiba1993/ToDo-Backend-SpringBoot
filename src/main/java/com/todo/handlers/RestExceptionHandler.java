@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.todo.exception.EntityNotFoundException;
 import com.todo.exception.InvalidEntityException;
+import com.todo.exception.NoSuchElementException;
 
 
 
@@ -24,6 +25,19 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 		
 		final ErrorDto errorDto = ErrorDto.builder()
 			.code(exception.getErrorCode())
+			.httpCode(notFound.value())
+			.message(exception.getMessage())
+			.build();
+	
+		return new ResponseEntity<>(errorDto,notFound);
+	}
+	
+	@ExceptionHandler(NoSuchElementException.class)
+	public ResponseEntity<ErrorDto> handleException(java.util.NoSuchElementException exception, WebRequest webRequest){
+		
+		final HttpStatus notFound = HttpStatus.NOT_FOUND;
+		
+		final ErrorDto errorDto = ErrorDto.builder()
 			.httpCode(notFound.value())
 			.message(exception.getMessage())
 			.build();

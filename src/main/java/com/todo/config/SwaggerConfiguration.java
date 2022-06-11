@@ -25,7 +25,7 @@ public class SwaggerConfiguration {
 	      .apiInfo(apiInfo())
 	      .select()
 	      .apis(RequestHandlerSelectors.basePackage("com.todo"))
-	      .paths(PathSelectors.ant(APP_ROOT+"/**"))
+	      .paths(PathSelectors.any())
 	      .build();
 	}
 	

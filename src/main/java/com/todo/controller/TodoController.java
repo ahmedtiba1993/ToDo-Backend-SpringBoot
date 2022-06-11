@@ -16,7 +16,6 @@ public class TodoController implements TodoApi{
 	
 	@Autowired	
 	public TodoController(TodoService todoService) {
-		super();
 		this.todoService = todoService;
 	}
 

@@ -18,6 +18,6 @@ import lombok.experimental.SuperBuilder;
 public class AbstractEntity {
 
 	@Id
-	@GeneratedValue
+    @GeneratedValue
 	private Integer id;
 }

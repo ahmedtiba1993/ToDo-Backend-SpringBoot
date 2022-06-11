@@ -16,15 +16,14 @@ import io.swagger.annotations.ApiResponses;
 @Api(APP_ROOT+"/todo")
 public interface TodoApi {
 
+	@PostMapping(value = APP_ROOT + "/todo/create" , consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Enregistrer un todo" , notes=" Cette methode permet d'enregistrer ou modificer un todo" , response =TodoDto.class)
 	@ApiResponses(value= {
 			@ApiResponse(code = 200 , message ="l'objet todo cree / modifie"),
 			@ApiResponse(code = 404 , message ="L'objet todo n'est pas valide ")
 
 	})
-	@PostMapping(value = APP_ROOT + "/todo/create" , consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
 	TodoDto save(@RequestBody TodoDto dto);
-	
 	
 	@ApiOperation(value = "Rechercher un todo par Id" , notes=" Cette methode permet de recherhcer un todo par son Id" , response =TodoDto.class)
 	@ApiResponses(value= {
