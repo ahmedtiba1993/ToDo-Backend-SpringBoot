@@ -1,7 +1,9 @@
 package com.todo.config;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,11 +13,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import com.todo.auth.ApplicationRequestFilter;
 import com.todo.auth.ApplicationUserDetailsService;
 
-
+@Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
@@ -32,12 +33,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.passwordEncoder(passwordEncoder());
 	}
 	
+	    
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		 http.cors()
          .and().authorizeRequests().antMatchers(
+					"/**/authenticate",
 					"/v2/api-docs",
 					"/swagger-resources",
 					"/swagger-resources/**",
@@ -52,9 +55,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
          .sessionManagement()
 		 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		 
+		
+		
 		http.addFilterBefore(applicationRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
 	}
+	
+	
+	
 	
 	@Bean
 	public AuthenticationManager AuthenticationManager() throws Exception {
@@ -65,4 +72,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+	
 }

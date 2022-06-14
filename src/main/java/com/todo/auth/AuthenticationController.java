@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+
 import static com.todo.utils.Constants.*;
 
 @RestController
@@ -23,9 +25,7 @@ public class AuthenticationController {
 	
 	@Autowired
 	private JwtUtil jwtUtil;
-	
-	
-	
+
 	@PostMapping("/authenticate")
 	public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
 		authenticationManager.authenticate(

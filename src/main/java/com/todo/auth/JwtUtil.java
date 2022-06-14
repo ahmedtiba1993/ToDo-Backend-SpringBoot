@@ -19,10 +19,10 @@ public class JwtUtil {
         return extractClaim(token, Claims::getSubject);
     }
     
-    public String extrarIdEntreprise(String token) {
+    public String extrarEmail(String token) {
         final Claims claims = extractAllClaims(token);
     	
-    	return claims.get("idEntreprise",String.class);
+    	return claims.get("email",String.class);
     }
 
     public Date extractExpiration(String token) {
@@ -53,6 +53,7 @@ public class JwtUtil {
         		.setSubject(userDetails.getUsername())
         		.setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+                .claim("email",userDetails.getEmail())
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
     }
 
