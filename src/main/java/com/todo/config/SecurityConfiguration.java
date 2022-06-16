@@ -16,7 +16,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.todo.auth.ApplicationRequestFilter;
 import com.todo.auth.ApplicationUserDetailsService;
 
-@Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
@@ -41,6 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		 http.cors()
          .and().authorizeRequests().antMatchers(
 					"/**/authenticate",
+					"/**/entreprises/create",
 					"/v2/api-docs",
 					"/swagger-resources",
 					"/swagger-resources/**",

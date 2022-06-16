@@ -3,6 +3,7 @@ package com.todo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todo.controller.api.UtilisateurApi;
@@ -10,6 +11,7 @@ import com.todo.model.dto.UtilisateurDto;
 import com.todo.service.UtilisateurService;
 
 @RestController
+@CrossOrigin
 public class UtilisateurController implements UtilisateurApi{
 
 	private UtilisateurService utilisateurService;

@@ -6,7 +6,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -34,11 +33,13 @@ public class ApplicationRequestFilter extends OncePerRequestFilter{
 		final String authHeader = request.getHeader("Authorization");	
 		String userEmail = null;
 		String jwt = null;
+		String email = null;
 		 	
 		if(authHeader != null && authHeader.startsWith("Bearer ")) {
 		
 			jwt = authHeader.substring(7, authHeader.length());
 			userEmail=jwtUtil.extractUsername(jwt);
+			email = jwtUtil.extrarEmail(jwt);
 		}
 		
 		if ( userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null ) {
@@ -50,7 +51,7 @@ public class ApplicationRequestFilter extends OncePerRequestFilter{
 			}
 		}
 		
-		MDC.put("email", userEmail);
+		MDC.put("email", email);
 		chain.doFilter(request, response);
 	}
 }

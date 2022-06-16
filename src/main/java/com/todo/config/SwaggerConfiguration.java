@@ -35,11 +35,11 @@ public class SwaggerConfiguration {
 	}
 	private ApiInfo apiInfo() {
 	    return new ApiInfo(
-	      "My REST API",
+	      "Todo Application",
 	      "Some custom description of API.",
 	      "1.0",
 	      "Terms of service",
-	      new Contact("Sallo Szrajbman", "www.baeldung.com", "salloszraj@gmail.com"),
+	      new Contact("Ahmed Tiba", "ahmedtiba1993.github.io", "ahmed.tiba.1993@gmail.com"),
 	      "License of API",
 	      "API license URL",
 	      Collections.emptyList());
