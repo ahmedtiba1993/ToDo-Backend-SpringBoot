@@ -35,7 +35,7 @@ public interface TodoApi {
 	TodoDto findById(@PathVariable("idTodo") Integer id);
 	
 	
-	@ApiOperation(value = "Renvoi la liste des todo" , notes=" Cette methode permet de charcher et renvoyer la liste des todo qui existant dans la BDD" , responseContainer ="List<ArticleDto>")
+	@ApiOperation(value = "Renvoi la liste des todo" , notes=" Cette methode permet de charcher et renvoyer la liste des todo qui existant dans la BDD" , responseContainer ="List<TodoDto>")
 	@ApiResponses(value= {
 			@ApiResponse(code = 200 , message ="La liste des todo / une liste vide "),
 
@@ -50,4 +50,12 @@ public interface TodoApi {
 	})
 	@DeleteMapping(value = APP_ROOT + "/todo/delete/{idTodo}")
 	void delete (@PathVariable("idTodo") Integer id);
+	
+	@ApiOperation(value = "Renvoi la liste des todo d'un utilisateur" , notes="Cette methode permet de charcher et renvoyer la liste des todo d'un utilisateur qui existant dans la BDD", responseContainer ="List<TodoDto>")
+	@ApiResponses(value= {
+			@ApiResponse(code = 200 , message ="todo a ete supprimer"),
+
+	})
+	@GetMapping(value = APP_ROOT + "/todos/utilsateur/{idTodo}")
+	List<TodoDto> findAllByUtilisateurId(@PathVariable("idTodo") Integer id);
 }

@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -40,5 +39,8 @@ public class Utilisateur extends AbstractEntity{
 	
 	@OneToMany(mappedBy = "utilisateur")
 	private List<Roles> roles;
+	
+	@OneToMany(mappedBy ="utilisateur")
+	private List<Todo> todo;
 	
 }

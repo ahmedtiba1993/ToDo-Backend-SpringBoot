@@ -41,4 +41,10 @@ public class TodoController implements TodoApi{
 		todoService.delete(id);
 	}
 
+	@Override
+	public List<TodoDto> findAllByUtilisateurId(Integer id) {
+		// TODO Auto-generated method stub
+		return todoService.findAllByUtilisateurId(id);
+	}
+
 }

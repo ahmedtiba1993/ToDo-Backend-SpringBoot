@@ -73,4 +73,14 @@ public class TodoServiceImpl implements TodoService{
 		todoRepository.deleteById(id);
 	}
 
+	@Override
+	public List<TodoDto> findAllByUtilisateurId(Integer id) {
+		if(id == null) {
+			return null;
+		}
+		return todoRepository.findAllByUtilisateurId(id).stream()
+				.map(TodoDto::fromEntity)
+				.collect(Collectors.toList());
+	}	
+
 }
