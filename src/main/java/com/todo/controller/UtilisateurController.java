@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todo.controller.api.UtilisateurApi;
+import com.todo.model.dto.PasswordResetTokenDto;
 import com.todo.model.dto.UtilisateurDto;
 import com.todo.service.UtilisateurService;
 
@@ -51,5 +52,28 @@ public class UtilisateurController implements UtilisateurApi{
 		// TODO Auto-generated method stub
 		return utilisateurService.findByEmail(email);
 	}
+
+	@Override
+	public void demandeChangerMdp(String email) {
+		// TODO Auto-generated method stub
+		utilisateurService.demandeChangerMdp(email);
+	}
+	
+	@Override
+	public PasswordResetTokenDto veriftokenChangerMdp(Integer idutilisateur, String token) {
+		// TODO Auto-generated method stub
+		return utilisateurService.veriftokenChangerMdp(idutilisateur , token);
+	}
+
+	@Override
+	public void changerMdp(Integer idutilisateur ,String token , String mdp , String confirmerMdp) {
+		// TODO Auto-generated method stub
+		utilisateurService.changerMdp(idutilisateur , token , mdp , confirmerMdp);
+		
+	}
+
+	
+	
+	
 
 }

@@ -4,6 +4,9 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.persistence.Column;
+
 import com.todo.model.Utilisateur;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +28,7 @@ public class UtilisateurDto {
 	private String mdp;
 	
 	private String confirmerMdp;
-	
+		
 	private List<RolesDto> roles;
 
 	

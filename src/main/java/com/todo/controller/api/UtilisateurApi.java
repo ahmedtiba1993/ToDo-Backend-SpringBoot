@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.todo.model.dto.PasswordResetTokenDto;
 import com.todo.model.dto.UtilisateurDto;
 import io.swagger.annotations.Api;
 import static com.todo.utils.Constants.*;
@@ -28,4 +31,13 @@ public interface UtilisateurApi {
 	
 	@GetMapping(UTILISATEUR_ENDPOINT + "/email/{emailUtilisateur}")
 	UtilisateurDto findByEmail(@PathVariable("emailUtilisateur") String email);
+	
+	@PostMapping(UTILISATEUR_ENDPOINT + "/changermdp/demandeChangerMdp/{email}")
+	void demandeChangerMdp(@PathVariable("email") String email);
+	
+	@GetMapping(UTILISATEUR_ENDPOINT + "/changermdp/veriftokenChangerMdp/{idutilisateur}/{token}")
+	PasswordResetTokenDto veriftokenChangerMdp( @PathVariable("idutilisateur") Integer idutilisateur, @PathVariable("token") String token);
+	
+	@PostMapping(UTILISATEUR_ENDPOINT + "/changermdp/{idutilisateur}/{token}/{mdp}/{confirmerMdp}")
+	void changerMdp( @PathVariable("idutilisateur") Integer idutilisateur, @PathVariable("token") String token , @PathVariable("mdp") String mdp , @PathVariable("confirmerMdp") String confirmerMdp);
 }

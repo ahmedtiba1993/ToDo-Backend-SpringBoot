@@ -39,8 +39,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		// TODO Auto-generated method stub
 		 http.cors()
          .and().authorizeRequests().antMatchers(
+        		 	"/sendSimpleEmail",
 					"/**/authenticate",
-					"/**/entreprises/create",
 					"/v2/api-docs",
 					"/swagger-resources",
 					"/swagger-resources/**",

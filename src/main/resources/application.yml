@@ -14,3 +14,18 @@ spring:
       dialect: org.hibernate.dialect.mysql5dialect
     generate-ddl: true
     show-sql: false
+    
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: <ahmed.tiba.developpeur@gmail.com">
+    password: <xplruvlghwyyuyey>
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
