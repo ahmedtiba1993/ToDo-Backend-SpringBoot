@@ -15,6 +15,11 @@ public class InvalidEntityException extends RuntimeException{
 		super(message);
 	}
 	
+	public InvalidEntityException(List<String> errors) {
+		this.errors = errors;
+	}
+
+	
 	public InvalidEntityException(String message , Throwable cause) {
 		super(message ,cause);
 	}

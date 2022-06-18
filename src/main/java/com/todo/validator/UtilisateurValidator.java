@@ -22,6 +22,7 @@ public static List<String> validate(UtilisateurDto utilisateurDto){
 			return errors;
 
 		}
+		
 		if(!StringUtils.hasLength(utilisateurDto.getNom())) {
 			errors.add("Veuillez renseigner le nom d'utilisateur");
 		}
@@ -36,6 +37,10 @@ public static List<String> validate(UtilisateurDto utilisateurDto){
 		
 		if(!StringUtils.hasLength(utilisateurDto.getMdp())) {
 			errors.add("Veuillez renseigner le mot de passe d'utilisateur");
+		}
+		
+		if(utilisateurDto.getMdp().equals(utilisateurDto.getConfirmerMdp()) == false) {
+			errors.add("les mots de passe saisis ne sont pas identiques");
 		}
 		
 		if(utilisateurDto.getDateDeNaissance() == null) {

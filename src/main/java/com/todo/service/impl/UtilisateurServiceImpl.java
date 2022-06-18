@@ -1,10 +1,16 @@
 package com.todo.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.todo.exception.EntityNotFoundException;
@@ -33,12 +39,24 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	public UtilisateurDto save(UtilisateurDto dto) {
 		
 		List<String> errors = UtilisateurValidator.validate(dto);
+		if(dto.getEmail() != null) {
+			Optional<Utilisateur> uti = utilisateurRepository.findUtilisateurByEmail(dto.getEmail());
+			if (uti.isEmpty()==false) {
+				errors.add("Cette adresse e-mail est déjà utilisée");
+			}
+		}
+			
 		if(!errors.isEmpty()) {
 			throw new InvalidEntityException("utilisateur n est pas valide",ErrorCodes.UTILISATEUR_NOT_VALID,errors);
 		}
 		
-		Utilisateur saveUtilisateur = utilisateurRepository.save(UtilisateurDto.toEntity(dto));
-		return UtilisateurDto.fromEntity(saveUtilisateur);	}
+	    BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
+		dto.setMdp(bc.encode(dto.getMdp()));
+		
+		Utilisateur saveUtilisateur = utilisateurRepository.save(UtilisateurDto.toEntity(dto));	    
+		return UtilisateurDto.fromEntity(saveUtilisateur);
+		
+	}
 
 	@Override
 	public UtilisateurDto findById(Integer id) {

@@ -1,6 +1,7 @@
 package com.todo.model;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -32,7 +33,7 @@ public class Utilisateur extends AbstractEntity{
 	private String email;
 	
 	@Column(name="dateDeNaissance")
-	private Instant dateDeNaissance;
+	private Date dateDeNaissance;
 	
 	@Column(name="mdp")
 	private String mdp;

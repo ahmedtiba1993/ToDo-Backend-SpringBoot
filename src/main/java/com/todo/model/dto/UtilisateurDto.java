@@ -1,6 +1,7 @@
 package com.todo.model.dto;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import com.todo.model.Utilisateur;
@@ -19,9 +20,11 @@ public class UtilisateurDto {
 
 	private String email;
 	
-	private Instant dateDeNaissance;
+	private Date dateDeNaissance;
 	
 	private String mdp;
+	
+	private String confirmerMdp;
 	
 	private List<RolesDto> roles;
 
