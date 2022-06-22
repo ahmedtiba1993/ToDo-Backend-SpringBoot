@@ -135,10 +135,11 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		
 	        // Create a Simple MailMessage.
 	        SimpleMailMessage message = new SimpleMailMessage();
-	        String sendemail="ahmed.tiba.1993@gmail.com";
+	        String sendemail=email;
+	        System.out.print(email);
 	        message.setTo(sendemail);
-	        message.setSubject("Lien de récupération de compte Facebook");
-	        message.setText("http://localhost:8080/"+UTILISATEUR_ENDPOINT+"/changermdp/veriftokenChangerMdp/"+uti.getId()+"/"+token);
+	        message.setSubject("Lien de récupération de compte ToDo");
+	        message.setText(token);
 
 	        // Send Message!
 	        this.emailSender.send(message); 
@@ -162,8 +163,10 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 			throw new InvalidEntityException("erreur",errors);
 		}
 		
+
 		BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
-		dto.setMdp(bc.encode(dto.getMdp()));
+		dto.setMdp(bc.encode(mdp));
+
 		Utilisateur saveUtilisateur = utilisateurRepository.save(UtilisateurDto.toEntity(dto));
 
 	}
