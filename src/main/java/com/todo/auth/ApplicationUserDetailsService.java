@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 import com.todo.model.dto.UtilisateurDto;
 import com.todo.service.UtilisateurService;
 
@@ -27,7 +28,7 @@ public class ApplicationUserDetailsService implements UserDetailsService{
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 		utilisateur.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRoleName())));
 		
-		return new ExtendedUser(utilisateur.getEmail() , utilisateur.getMdp() ,authorities);
+		return new ExtendedUser(utilisateur.getEmail() , utilisateur.getMdp() , utilisateur.getIdEnreprise(),authorities);
 	
 	}
 

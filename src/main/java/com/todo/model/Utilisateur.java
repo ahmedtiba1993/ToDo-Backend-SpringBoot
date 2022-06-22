@@ -44,5 +44,9 @@ public class Utilisateur extends AbstractEntity{
 	@OneToMany(mappedBy ="utilisateur")
 	private List<Todo> todo;
 	
+	@Column(name="idEnreprise")
+	private Integer idEnreprise;
+
+	
 	
 }

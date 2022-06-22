@@ -30,6 +30,8 @@ public class UtilisateurDto {
 	private String confirmerMdp;
 		
 	private List<RolesDto> roles;
+	
+	private Integer idEnreprise;
 
 	
 	public static UtilisateurDto fromEntity(Utilisateur utilisateur) {
@@ -44,6 +46,7 @@ public class UtilisateurDto {
 				.prenom(utilisateur.getPrenom())
 				.email(utilisateur.getEmail())
 				.mdp(utilisateur.getMdp())
+				.idEnreprise(utilisateur.getIdEnreprise())
 				.dateDeNaissance(utilisateur.getDateDeNaissance())
 				.roles(
 						utilisateur.getRoles() != null ?
@@ -66,6 +69,7 @@ public class UtilisateurDto {
 		utilisateur.setPrenom(utilisateurDto.getPrenom());
 		utilisateur.setEmail(utilisateurDto.getEmail());
 		utilisateur.setMdp(utilisateurDto.getMdp());
+		utilisateur.setIdEnreprise(utilisateurDto.getIdEnreprise());
 		utilisateur.setDateDeNaissance(utilisateurDto.getDateDeNaissance());
 		return utilisateur;
 	}

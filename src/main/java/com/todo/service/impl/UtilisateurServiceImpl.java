@@ -205,12 +205,5 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		new EntityNotFoundException("aucun demande"));
 				
 	}
-	
-
-		
-	
-
-	
-
 
 }

@@ -3,7 +3,6 @@ package com.todo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 import com.todo.auth.ApplicationRequestFilter;
 import com.todo.auth.ApplicationUserDetailsService;
 
@@ -39,8 +39,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		// TODO Auto-generated method stub
 		 http.cors()
          .and().authorizeRequests().antMatchers(
-        		 	"/sendSimpleEmail",
 					"/**/authenticate",
+					"/**/entreprises/create",
 					"/v2/api-docs",
 					"/swagger-resources",
 					"/swagger-resources/**",
