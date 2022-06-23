@@ -3,7 +3,6 @@ package com.todo.model.dto;
 import java.time.Instant;
 
 import javax.persistence.Column;
-
 import com.todo.model.Todo;
 
 import lombok.Builder;
@@ -21,6 +20,8 @@ public class TodoDto {
 	
 	private Instant dateTodo;
 	
+	private UtilisateurDto utilisateur;
+	
 	public static TodoDto fromEntity(Todo todo) {
 		
 		if(todo == null) {
@@ -31,6 +32,7 @@ public class TodoDto {
 				.libelleTodo(todo.getLibelleTodo())
 				.descriptionTodo(todo.getDescriptionTodo())
 				.dateTodo(todo.getDateTodo())
+				.utilisateur(UtilisateurDto.fromEntity(todo.getUtilisateur()))
 				.build();
 	}
 	
@@ -45,7 +47,8 @@ public class TodoDto {
 		todo.setId(20);
 		todo.setLibelleTodo(dto.getLibelleTodo());
 		todo.setDescriptionTodo(dto.getDescriptionTodo());
-		todo.setDateTodo(dto.getDateTodo());		
+		todo.setDateTodo(dto.getDateTodo());
+		todo.setUtilisateur(UtilisateurDto.toEntity(dto.getUtilisateur()));
 		
 		return todo;
 	}
