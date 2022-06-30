@@ -14,4 +14,7 @@ public interface TodoService {
 	void delete (Integer id);
 	
 	List<TodoDto> findAllByUtilisateurId(Integer id);
+	
+	void changerEtat(Integer id);
+	
 }

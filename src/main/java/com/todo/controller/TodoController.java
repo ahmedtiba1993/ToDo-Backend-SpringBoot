@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todo.controller.api.TodoApi;
@@ -46,5 +47,13 @@ public class TodoController implements TodoApi{
 		// TODO Auto-generated method stub
 		return todoService.findAllByUtilisateurId(id);
 	}
+
+	@Override
+	public void changerEtat(Integer id) {
+		// TODO Auto-generated method stub
+		todoService.changerEtat(id) ;
+	}
+
+	
 
 }

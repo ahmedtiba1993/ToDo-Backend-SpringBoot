@@ -1,6 +1,8 @@
 package com.todo.model;
 
 import java.time.Instant;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,7 +27,9 @@ public class Todo extends AbstractEntity{
 	
 	private String descriptionTodo;
 	
-	private Instant dateTodo;
+	private Date dateTodo;
+	
+	private Boolean etatTodo;
 	
 	@ManyToOne
 	@JoinColumn(name="idutilisateur")

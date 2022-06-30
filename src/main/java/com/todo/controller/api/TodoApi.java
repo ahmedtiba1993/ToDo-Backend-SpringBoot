@@ -1,11 +1,16 @@
 package com.todo.controller.api;
 import static com.todo.utils.Constants.APP_ROOT;
 import java.util.List;
+
+import javax.persistence.PostUpdate;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.todo.model.dto.TodoDto;
 import io.swagger.annotations.Api;
@@ -58,4 +63,7 @@ public interface TodoApi {
 	})
 	@GetMapping(value = APP_ROOT + "/todos/utilsateur/{idTodo}")
 	List<TodoDto> findAllByUtilisateurId(@PathVariable("idTodo") Integer id);
+	
+	@PostMapping(value = APP_ROOT + "/todo/changeretat/{idTodo}")
+	void changerEtat(@PathVariable("idTodo") Integer id);
 }

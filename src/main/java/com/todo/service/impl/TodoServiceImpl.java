@@ -10,7 +10,9 @@ import com.todo.exception.ErrorCodes;
 import com.todo.exception.InvalidEntityException;
 import com.todo.exception.NoSuchElementException;
 import com.todo.model.Todo;
+import com.todo.model.Utilisateur;
 import com.todo.model.dto.TodoDto;
+import com.todo.model.dto.UtilisateurDto;
 import com.todo.repository.TodoRepository;
 import com.todo.service.TodoService;
 import com.todo.validator.TodoValidator;
@@ -36,7 +38,7 @@ public class TodoServiceImpl implements TodoService{
 		if(!errors.isEmpty()) {
 			throw new InvalidEntityException("todo n'est pas valide",ErrorCodes.TODO_NOT_VALID,errors);
 		}
-
+		dto.setEtatTodo(false);
 		return TodoDto.fromEntity(todoRepository.save(TodoDto.toEntity(dto)));
 
 	}
@@ -81,6 +83,21 @@ public class TodoServiceImpl implements TodoService{
 		return todoRepository.findAllByUtilisateurId(id).stream()
 				.map(TodoDto::fromEntity)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public void changerEtat(Integer id) {
+		// TODO Auto-generated method stub
+		if (id == null) {
+			return;
+		}
+		
+		Optional<Todo> todo = todoRepository.findById(id);
+		TodoDto dto = TodoDto.fromEntity(todo.get());
+		dto.setId(id);
+		dto.setEtatTodo(true);
+				
+		Todo saveTodo = todoRepository.save(TodoDto.toEntity(dto));
 	}	
 
 }

@@ -1,6 +1,7 @@
 package com.todo.model.dto;
 
 import java.time.Instant;
+import java.util.Date;
 
 import javax.persistence.Column;
 import com.todo.model.Todo;
@@ -18,7 +19,9 @@ public class TodoDto {
 	
 	private String descriptionTodo;
 	
-	private Instant dateTodo;
+	private Date dateTodo;
+	
+	private Boolean etatTodo;
 	
 	private UtilisateurDto utilisateur;
 	
@@ -32,6 +35,7 @@ public class TodoDto {
 				.libelleTodo(todo.getLibelleTodo())
 				.descriptionTodo(todo.getDescriptionTodo())
 				.dateTodo(todo.getDateTodo())
+				.etatTodo(todo.getEtatTodo())
 				.utilisateur(UtilisateurDto.fromEntity(todo.getUtilisateur()))
 				.build();
 	}
@@ -44,10 +48,11 @@ public class TodoDto {
 		
 
 		Todo todo = new Todo();
-		todo.setId(20);
+		todo.setId(dto.getId());
 		todo.setLibelleTodo(dto.getLibelleTodo());
 		todo.setDescriptionTodo(dto.getDescriptionTodo());
 		todo.setDateTodo(dto.getDateTodo());
+		todo.setEtatTodo(dto.getEtatTodo());
 		todo.setUtilisateur(UtilisateurDto.toEntity(dto.getUtilisateur()));
 		
 		return todo;

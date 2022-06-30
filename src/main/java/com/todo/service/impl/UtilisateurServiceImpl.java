@@ -62,7 +62,7 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 			throw new InvalidEntityException("utilisateur n est pas valide",ErrorCodes.UTILISATEUR_NOT_VALID,errors);
 		}
 		
-	    BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
+		BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
 		dto.setMdp(bc.encode(dto.getMdp()));
 		
 		Utilisateur saveUtilisateur = utilisateurRepository.save(UtilisateurDto.toEntity(dto));	    
