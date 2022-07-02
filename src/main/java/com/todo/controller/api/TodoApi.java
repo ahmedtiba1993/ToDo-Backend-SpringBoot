@@ -66,4 +66,7 @@ public interface TodoApi {
 	
 	@PostMapping(value = APP_ROOT + "/todo/changeretat/{idTodo}")
 	void changerEtat(@PathVariable("idTodo") Integer id);
+	
+	@GetMapping(value = APP_ROOT + "/todos/allEnded/{idUtilisateur}")
+	List<TodoDto> findAllEnded(@PathVariable("idUtilisateur") Integer idUtilisateur);
 }

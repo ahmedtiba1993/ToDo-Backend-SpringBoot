@@ -41,4 +41,5 @@ public interface UtilisateurApi {
 	
 	@PostMapping(UTILISATEUR_ENDPOINT + "/changermdp/{idutilisateur}/{token}/{mdp}/{confirmerMdp}")
 	void changerMdp( @PathVariable("idutilisateur") Integer idutilisateur, @PathVariable("token") String token , @PathVariable("mdp") String mdp , @PathVariable("confirmerMdp") String confirmerMdp);
+	
 }

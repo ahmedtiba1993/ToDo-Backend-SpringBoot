@@ -54,6 +54,12 @@ public class TodoController implements TodoApi{
 		todoService.changerEtat(id) ;
 	}
 
+	@Override
+	public List<TodoDto> findAllEnded(Integer idUtilisateur) {
+		// TODO Auto-generated method stub
+		return todoService.findfAllEnded(idUtilisateur);
+	}
+
 	
 
 }

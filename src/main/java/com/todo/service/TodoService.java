@@ -17,4 +17,6 @@ public interface TodoService {
 	
 	void changerEtat(Integer id);
 	
+	List<TodoDto> findfAllEnded(Integer id);
+	
 }

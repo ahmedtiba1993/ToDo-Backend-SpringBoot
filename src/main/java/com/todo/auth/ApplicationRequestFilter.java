@@ -44,7 +44,7 @@ public class ApplicationRequestFilter extends OncePerRequestFilter{
 		
 			jwt = authHeader.substring(7);
 			userEmail=jwtUtil.extractUsername(jwt);
-			idEntreprise = jwtUtil.extrarIdEntreprise(jwt);
+			//idEntreprise = jwtUtil.extrarIdEntreprise(jwt);
 		}
 		
 		if ( userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null ) {
@@ -59,7 +59,7 @@ public class ApplicationRequestFilter extends OncePerRequestFilter{
 			}
 		}
 		
-		MDC.put("idEntreprise", idEntreprise);
+		//MDC.put("idEntreprise", idEntreprise);
 		chain.doFilter(request, response);
 	}
 }

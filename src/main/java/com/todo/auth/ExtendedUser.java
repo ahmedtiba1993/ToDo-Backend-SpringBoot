@@ -22,11 +22,11 @@ public class ExtendedUser extends User {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ExtendedUser(String username, String password,Integer idEntreprise,
+	/*public ExtendedUser(String username, String password,Integer idEntreprise,
 			Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
 		this.idEntreprise = idEntreprise;
-	}
+	}*/
 	
 	
 }

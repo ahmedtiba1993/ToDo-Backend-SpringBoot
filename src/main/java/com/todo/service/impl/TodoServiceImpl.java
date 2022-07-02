@@ -98,6 +98,14 @@ public class TodoServiceImpl implements TodoService{
 		dto.setEtatTodo(true);
 				
 		Todo saveTodo = todoRepository.save(TodoDto.toEntity(dto));
+	}
+
+	@Override
+	public List<TodoDto> findfAllEnded(Integer id) {
+		// TODO Auto-generated method stub
+		return todoRepository.findAllEnded(id).stream()
+				.map(TodoDto::fromEntity)
+				.collect(Collectors.toList());
 	}	
 
 }

@@ -72,8 +72,4 @@ public class UtilisateurController implements UtilisateurApi{
 		
 	}
 
-	
-	
-	
-
 }
