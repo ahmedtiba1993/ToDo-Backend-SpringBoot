@@ -31,6 +31,8 @@ public class Todo extends AbstractEntity{
 	
 	private Boolean etatTodo;
 	
+	private Boolean corbeille;
+	
 	@ManyToOne
 	@JoinColumn(name="idutilisateur")
 	private Utilisateur utilisateur;

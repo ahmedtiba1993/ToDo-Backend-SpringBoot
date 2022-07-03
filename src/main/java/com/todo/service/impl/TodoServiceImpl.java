@@ -39,6 +39,7 @@ public class TodoServiceImpl implements TodoService{
 			throw new InvalidEntityException("todo n'est pas valide",ErrorCodes.TODO_NOT_VALID,errors);
 		}
 		dto.setEtatTodo(false);
+		dto.setCorbeille(false);
 		return TodoDto.fromEntity(todoRepository.save(TodoDto.toEntity(dto)));
 
 	}
@@ -119,6 +120,26 @@ public class TodoServiceImpl implements TodoService{
 		return todoRepository.findAllNotEnded(id).stream()
 				.map(TodoDto::fromEntity)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public void corbeille(Integer id) {
+		// TODO Auto-generated method stub
+
+		if (id == null) {
+			return;
+		}
+		Optional<Todo> todo = todoRepository.findById(id);
+		TodoDto dto = TodoDto.fromEntity(todo.get());
+
+		if(dto.getCorbeille() == false)
+		{
+			dto.setCorbeille(true);
+		}else {
+			dto.setCorbeille(false);
+		}
+		Todo saveTodo = todoRepository.save(TodoDto.toEntity(dto));
+
 	}	
 
 }

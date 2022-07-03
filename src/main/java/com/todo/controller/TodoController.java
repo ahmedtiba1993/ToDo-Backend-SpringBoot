@@ -66,6 +66,12 @@ public class TodoController implements TodoApi{
 		return todoService.findfAllNotEnded(idUtilisateur);
 	}
 
+	@Override
+	public void corbeille(Integer id) {
+		// TODO Auto-generated method stub
+		todoService.corbeille(id);
+	}
+
 	
 
 }

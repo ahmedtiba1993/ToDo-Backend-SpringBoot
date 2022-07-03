@@ -20,6 +20,8 @@ public interface TodoService {
 	List<TodoDto> findfAllEnded(Integer id);
 	
 	List<TodoDto> findfAllNotEnded(Integer id);
+	
+	void corbeille(Integer id);
 
 	
 }

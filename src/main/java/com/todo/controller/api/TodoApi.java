@@ -72,4 +72,7 @@ public interface TodoApi {
 	
 	@GetMapping(value = APP_ROOT + "/todos/NotEnded/{idUtilisateur}")
 	List<TodoDto> findAllNotEnded(@PathVariable("idUtilisateur") Integer idUtilisateur);
+	
+	@PostMapping(value = APP_ROOT + "/todo/corbeille/{idTodo}")
+	void corbeille(@PathVariable("idTodo") Integer id);
 }

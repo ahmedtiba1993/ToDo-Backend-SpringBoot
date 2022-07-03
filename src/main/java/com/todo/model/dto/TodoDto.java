@@ -23,6 +23,8 @@ public class TodoDto {
 	
 	private Boolean etatTodo;
 	
+	private Boolean corbeille;
+	
 	private UtilisateurDto utilisateur;
 	
 	public static TodoDto fromEntity(Todo todo) {
@@ -36,6 +38,7 @@ public class TodoDto {
 				.descriptionTodo(todo.getDescriptionTodo())
 				.dateTodo(todo.getDateTodo())
 				.etatTodo(todo.getEtatTodo())
+				.corbeille(todo.getCorbeille())
 				.utilisateur(UtilisateurDto.fromEntity(todo.getUtilisateur()))
 				.build();
 	}
@@ -53,6 +56,7 @@ public class TodoDto {
 		todo.setDescriptionTodo(dto.getDescriptionTodo());
 		todo.setDateTodo(dto.getDateTodo());
 		todo.setEtatTodo(dto.getEtatTodo());
+		todo.setCorbeille(dto.getCorbeille());
 		todo.setUtilisateur(UtilisateurDto.toEntity(dto.getUtilisateur()));
 		
 		return todo;
