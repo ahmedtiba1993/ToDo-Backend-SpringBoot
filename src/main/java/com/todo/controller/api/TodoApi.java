@@ -69,4 +69,7 @@ public interface TodoApi {
 	
 	@GetMapping(value = APP_ROOT + "/todos/allEnded/{idUtilisateur}")
 	List<TodoDto> findAllEnded(@PathVariable("idUtilisateur") Integer idUtilisateur);
+	
+	@GetMapping(value = APP_ROOT + "/todos/NotEnded/{idUtilisateur}")
+	List<TodoDto> findAllNotEnded(@PathVariable("idUtilisateur") Integer idUtilisateur);
 }

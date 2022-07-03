@@ -60,6 +60,12 @@ public class TodoController implements TodoApi{
 		return todoService.findfAllEnded(idUtilisateur);
 	}
 
+	@Override
+	public List<TodoDto> findAllNotEnded(Integer idUtilisateur) {
+		// TODO Auto-generated method stub
+		return todoService.findfAllNotEnded(idUtilisateur);
+	}
+
 	
 
 }

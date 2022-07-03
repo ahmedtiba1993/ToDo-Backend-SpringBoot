@@ -106,6 +106,14 @@ public class TodoServiceImpl implements TodoService{
 		return todoRepository.findAllEnded(id).stream()
 				.map(TodoDto::fromEntity)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<TodoDto> findfAllNotEnded(Integer id) {
+		// TODO Auto-generated method stub
+		return todoRepository.findAllNotEnded(id).stream()
+				.map(TodoDto::fromEntity)
+				.collect(Collectors.toList());
 	}	
 
 }
