@@ -95,7 +95,12 @@ public class TodoServiceImpl implements TodoService{
 		Optional<Todo> todo = todoRepository.findById(id);
 		TodoDto dto = TodoDto.fromEntity(todo.get());
 		dto.setId(id);
-		dto.setEtatTodo(true);
+		if(dto.getEtatTodo() == false)
+		{
+			dto.setEtatTodo(true);
+		}else {
+			dto.setEtatTodo(false);
+		}
 				
 		Todo saveTodo = todoRepository.save(TodoDto.toEntity(dto));
 	}
