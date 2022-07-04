@@ -1,5 +1,6 @@
 package com.todo.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,9 +36,17 @@ public class TodoServiceImpl implements TodoService{
 	public TodoDto save(TodoDto dto) {
 		
 		List<String> errors = TodoValidator.validate(dto);
+		
+		Date aujourdhui = new Date();		
+		if(aujourdhui.before(dto.getDateTodo())==false){
+			errors.add("il faut choisir une date a partir aujourdhui");
+		}
+		
 		if(!errors.isEmpty()) {
 			throw new InvalidEntityException("todo n'est pas valide",ErrorCodes.TODO_NOT_VALID,errors);
 		}
+		
+	
 		dto.setEtatTodo(false);
 		dto.setCorbeille(false);
 		return TodoDto.fromEntity(todoRepository.save(TodoDto.toEntity(dto)));
@@ -140,6 +149,42 @@ public class TodoServiceImpl implements TodoService{
 		}
 		Todo saveTodo = todoRepository.save(TodoDto.toEntity(dto));
 
-	}	
+	}
+
+	@Override
+	public List<TodoDto> findAllCorbeille(Integer id) {
+		// TODO Auto-generated method stub
+		return todoRepository.findAllCorbeille(id).stream()
+				.map(TodoDto::fromEntity)
+				.collect(Collectors.toList());
+		}
+
+	@Override
+	public void important(Integer id) {
+		// TODO Auto-generated method stub
+		if (id == null) {
+			return;
+		}
+		Optional<Todo> todo = todoRepository.findById(id);
+		TodoDto dto = TodoDto.fromEntity(todo.get());
+
+		if(dto.getImportant() == false)
+		{
+			dto.setImportant(true);
+		}else {
+			dto.setImportant(false);
+		}
+		Todo saveTodo = todoRepository.save(TodoDto.toEntity(dto));
+
+		
+	}
+
+	@Override
+	public List<TodoDto> findAllImportant(Integer id) {
+		// TODO Auto-generated method stub
+		return todoRepository.findAllImportant(id).stream()
+				.map(TodoDto::fromEntity)
+				.collect(Collectors.toList());
+		}	
 
 }

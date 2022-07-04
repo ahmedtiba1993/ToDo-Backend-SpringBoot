@@ -18,5 +18,12 @@ public interface TodoRepository extends JpaRepository<Todo, Integer>{
 	
 	@Query(value ="select t from Todo t where t.etatTodo = false and idutilisateur= :id and corbeille=false")
 	List<Todo> findAllNotEnded(@Param("id") Integer id);
+	
+	@Query(value ="select t from Todo t where idutilisateur= :id and corbeille=true")
+	List<Todo> findAllCorbeille(@Param("id") Integer id);
+	
+	@Query(value ="select t from Todo t where idutilisateur= :id and important=true")
+	List<Todo> findAllImportant(@Param("id") Integer id);
+
 
 }

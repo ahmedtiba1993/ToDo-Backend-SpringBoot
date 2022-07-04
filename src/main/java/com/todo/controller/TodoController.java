@@ -72,6 +72,25 @@ public class TodoController implements TodoApi{
 		todoService.corbeille(id);
 	}
 
+	@Override
+	public List<TodoDto> findAllCorbeille(Integer id) {
+		// TODO Auto-generated method stub
+		return todoService.findAllCorbeille(id);
+	}
+
+	@Override
+	public void important(Integer id) {
+		// TODO Auto-generated method stub
+		todoService.important(id);
+		
+	}
+
+	@Override
+	public List<TodoDto> findAllImportant(Integer id) {
+		// TODO Auto-generated method stub
+		return todoService.findAllImportant(id);
+	}
+
 	
 
 }

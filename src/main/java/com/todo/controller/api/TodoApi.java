@@ -75,4 +75,13 @@ public interface TodoApi {
 	
 	@PostMapping(value = APP_ROOT + "/todo/corbeille/{idTodo}")
 	void corbeille(@PathVariable("idTodo") Integer id);
+	
+	@PostMapping(value = APP_ROOT + "/todo/important/{idTodo}")
+	void important(@PathVariable("idTodo") Integer id);
+	
+	@GetMapping(value = APP_ROOT + "/todos/findAllCorbeille/{idUtilisateur}")
+	List<TodoDto> findAllCorbeille(@PathVariable("idUtilisateur") Integer id);
+	
+	@GetMapping(value = APP_ROOT + "/todos/findAllImportant/{idUtilisateur}")
+	List<TodoDto> findAllImportant(@PathVariable("idUtilisateur") Integer id);
 }
