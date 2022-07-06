@@ -49,6 +49,7 @@ public class TodoServiceImpl implements TodoService{
 	
 		dto.setEtatTodo(false);
 		dto.setCorbeille(false);
+		dto.setImportant(false);
 		return TodoDto.fromEntity(todoRepository.save(TodoDto.toEntity(dto)));
 
 	}

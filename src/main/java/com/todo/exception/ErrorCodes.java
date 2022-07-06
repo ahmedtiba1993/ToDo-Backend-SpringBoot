@@ -9,11 +9,13 @@ public enum ErrorCodes {
 	/*Utilisateur*/
 	UTILISATEUR_NOT_FOUND(2000),
 	UTILISATEUR_NOT_VALID(2001),
-	
+		
+	//Groupe todo
+	GROUPE_TODO_NOT_VALID(3000),
+
 	//auth
 	BAD_CREDENTIALS(14000);
-
-	
+		
 	private int code;
 	
 	ErrorCodes(int code){
