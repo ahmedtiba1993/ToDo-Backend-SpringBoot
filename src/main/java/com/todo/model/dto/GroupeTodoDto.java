@@ -1,9 +1,9 @@
 package com.todo.model.dto;
 
 import java.util.Date;
-
+import java.util.List;
+import java.util.stream.Collectors;
 import com.todo.model.GroupeTodo;
-
 import lombok.Builder;
 import lombok.Data;
 
@@ -18,7 +18,8 @@ public class GroupeTodoDto {
 	public Date creation;
 	
 	private UtilisateurDto utilisateur;
-
+	
+	private List<LigneGroupeTodoDto> ligneGroupeTodo;
 	
 	public static GroupeTodoDto fromEntity(GroupeTodo groupeTodo) {
 		
@@ -30,6 +31,12 @@ public class GroupeTodoDto {
 				.nom(groupeTodo.getNom())
 				.creation(groupeTodo.getCreation())
 				.utilisateur(UtilisateurDto.fromEntity(groupeTodo.getUtilisateur()))
+				.ligneGroupeTodo(
+						groupeTodo.getLigneGroupeTodos() !=null ?
+								groupeTodo.getLigneGroupeTodos().stream()
+								.map(LigneGroupeTodoDto::fromEntity)
+								.collect(Collectors.toList()) :null
+						)
 				.build();
 	}
 	
