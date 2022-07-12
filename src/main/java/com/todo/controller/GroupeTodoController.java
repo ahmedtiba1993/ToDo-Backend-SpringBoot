@@ -55,7 +55,7 @@ public class GroupeTodoController implements GroupeTodoApi{
 	}
 
 	@Override
-	public void save(TodoDto dto, Integer id) {
+	public void ajouterTodo(TodoDto dto, Integer id) {
 		// TODO Auto-generated method stub
 		groupeTodoService.ajouterTodo(dto, id);
 	}

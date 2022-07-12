@@ -36,5 +36,5 @@ public interface GroupeTodoApi {
 	List<GroupeTodoDto> findAllByUtilisateurId(@PathVariable("idTodo") Integer id);
 	
 	@PostMapping(value = APP_ROOT + "/groupetodo/ajoutertodo/{id}")
-	void save(@RequestBody TodoDto dto , @PathVariable("id") Integer id);
+	void ajouterTodo(@RequestBody TodoDto dto , @PathVariable("id") Integer id);
 }

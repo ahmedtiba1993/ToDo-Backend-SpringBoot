@@ -38,7 +38,7 @@ public class TodoServiceImpl implements TodoService{
 		List<String> errors = TodoValidator.validate(dto);
 		
 		Date aujourdhui = new Date();		
-		if(aujourdhui.before(dto.getDateTodo())==false){
+		if(dto.getDateTodo() != null && aujourdhui.before(dto.getDateTodo())==false){
 			errors.add("il faut choisir une date a partir aujourdhui");
 		}
 		

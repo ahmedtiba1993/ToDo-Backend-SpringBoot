@@ -115,13 +115,13 @@ public class GroupeTodoServiceImpl implements GroupeTodoService{
 	@Override
 	public void ajouterTodo(TodoDto dto, Integer idGrTodo) {
 		// TODO Auto-generated method stub
+		
 		TodoDto tododto = todoService.save(dto);
 
 		Optional<GroupeTodo> groupeTodo = groupeTodoRepository.findById(idGrTodo);
 
 		GroupeTodoDto groupeTodoDto = GroupeTodoDto.fromEntity(groupeTodo.get());
 
-			System.out.println(groupeTodoDto.getNom());
 		LigneGroupeTodoDto ligneGroupeTodoDto = LigneGroupeTodoDto.builder()
 				.todo(tododto)
 				.groupeTodo(groupeTodoDto)
