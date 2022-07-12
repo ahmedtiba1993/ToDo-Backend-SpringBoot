@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todo.controller.api.GroupeTodoApi;
+import com.todo.model.LigneGroupeTodo;
 import com.todo.model.dto.GroupeTodoDto;
+import com.todo.model.dto.TodoDto;
 import com.todo.service.GroupeTodoService;
 
 @RestController
@@ -50,6 +52,12 @@ public class GroupeTodoController implements GroupeTodoApi{
 	public List<GroupeTodoDto> findAllByUtilisateurId(Integer id) {
 		// TODO Auto-generated method stub
 		return groupeTodoService.findAllByUtilisateurId(id);
+	}
+
+	@Override
+	public void save(TodoDto dto, Integer id) {
+		// TODO Auto-generated method stub
+		groupeTodoService.ajouterTodo(dto, id);
 	}
 
 }

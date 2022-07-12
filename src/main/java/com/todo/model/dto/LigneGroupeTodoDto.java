@@ -22,7 +22,6 @@ public class LigneGroupeTodoDto {
 		return LigneGroupeTodoDto.builder()
 				.id(ligneGroupeTodo.getId())
 				.todo(TodoDto.fromEntity(ligneGroupeTodo.getTodo()))
-				.groupeTodo(GroupeTodoDto.fromEntity(ligneGroupeTodo.getGroupetodo()))
 				.build();
 	}
 	

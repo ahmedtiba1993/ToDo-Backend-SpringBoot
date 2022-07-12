@@ -32,8 +32,8 @@ public class GroupeTodoDto {
 				.creation(groupeTodo.getCreation())
 				.utilisateur(UtilisateurDto.fromEntity(groupeTodo.getUtilisateur()))
 				.ligneGroupeTodo(
-						groupeTodo.getLigneGroupeTodos() !=null ?
-								groupeTodo.getLigneGroupeTodos().stream()
+						groupeTodo.getLigneGroupeTodo() !=null ?
+								groupeTodo.getLigneGroupeTodo().stream()
 								.map(LigneGroupeTodoDto::fromEntity)
 								.collect(Collectors.toList()) :null
 						)

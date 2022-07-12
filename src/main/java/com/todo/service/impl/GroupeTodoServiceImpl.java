@@ -15,10 +15,12 @@ import com.todo.model.LigneGroupeTodo;
 import com.todo.model.Todo;
 import com.todo.model.dto.GroupeTodoDto;
 import com.todo.model.dto.LigneGroupeTodoDto;
+import com.todo.model.dto.TodoDto;
 import com.todo.repository.GroupeTodoRepository;
 import com.todo.repository.LigneGroupeTodoRepository;
 import com.todo.repository.TodoRepository;
 import com.todo.service.GroupeTodoService;
+import com.todo.service.TodoService;
 import com.todo.validator.GroupeTodoValidator;
 import com.todo.validator.TodoValidator;
 
@@ -29,16 +31,16 @@ import lombok.extern.slf4j.Slf4j;
 public class GroupeTodoServiceImpl implements GroupeTodoService{
 
 	private GroupeTodoRepository groupeTodoRepository;
-	private TodoRepository todoRepository;
 	private LigneGroupeTodoRepository ligneGroupeTodoRepository;
+	private TodoService todoService; 
 	
 	@Autowired
-	public GroupeTodoServiceImpl(GroupeTodoRepository groupeTodoRepository, TodoRepository todoRepository,
-			LigneGroupeTodoRepository ligneGroupeTodoRepository) {
+	public GroupeTodoServiceImpl(GroupeTodoRepository groupeTodoRepository,
+			LigneGroupeTodoRepository ligneGroupeTodoRepository , TodoService todoService) {
 		super();
 		this.groupeTodoRepository = groupeTodoRepository;
-		this.todoRepository = todoRepository;
 		this.ligneGroupeTodoRepository = ligneGroupeTodoRepository;
+		this.todoService = todoService;
 	}
 
 	@Override
@@ -48,7 +50,7 @@ public class GroupeTodoServiceImpl implements GroupeTodoService{
 			throw new InvalidEntityException("Groupe todo n'est pas valide",ErrorCodes.GROUPE_TODO_NOT_VALID,errors);
 		}
 		
-		List<String> errorstodo = new ArrayList<String>();	
+		/*List<String> errorstodo = new ArrayList<String>();	
 		if(dto.getLigneGroupeTodo() != null) {
 			dto.getLigneGroupeTodo().forEach(LigGrTodo->{
 				Optional<Todo> todo = todoRepository.findById(LigGrTodo.getTodo().getId());
@@ -56,7 +58,7 @@ public class GroupeTodoServiceImpl implements GroupeTodoService{
 					errorstodo.add("todo avec id '"+LigGrTodo.getTodo().getId()+"' n'existe pas");
 				}
 			});
-		}
+		}*/
 		
 		GroupeTodo saveGrTodo = groupeTodoRepository.save(GroupeTodoDto.toEntity(dto));
 				
@@ -109,5 +111,24 @@ public class GroupeTodoServiceImpl implements GroupeTodoService{
 				.map(GroupeTodoDto::fromEntity)
 				.collect(Collectors.toList());
 		}
+
+	@Override
+	public void ajouterTodo(TodoDto dto, Integer idGrTodo) {
+		// TODO Auto-generated method stub
+		TodoDto tododto = todoService.save(dto);
+
+		Optional<GroupeTodo> groupeTodo = groupeTodoRepository.findById(idGrTodo);
+
+		GroupeTodoDto groupeTodoDto = GroupeTodoDto.fromEntity(groupeTodo.get());
+
+			System.out.println(groupeTodoDto.getNom());
+		LigneGroupeTodoDto ligneGroupeTodoDto = LigneGroupeTodoDto.builder()
+				.todo(tododto)
+				.groupeTodo(groupeTodoDto)
+				.build();
+
+		ligneGroupeTodoRepository.save(ligneGroupeTodoDto.toEntity(ligneGroupeTodoDto));
+		
+	}
 
 }

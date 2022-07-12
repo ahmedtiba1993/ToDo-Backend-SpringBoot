@@ -43,5 +43,4 @@ public class Todo extends AbstractEntity{
 	
 	@OneToMany(mappedBy="todo")
 	private List<LigneGroupeTodo> ligneGroupeTodo;
-	
 }

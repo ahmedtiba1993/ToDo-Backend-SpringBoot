@@ -32,6 +32,6 @@ public class GroupeTodo extends AbstractEntity{
 	private Utilisateur utilisateur;
 	
 	@OneToMany(mappedBy = "groupetodo")
-	private List<LigneGroupeTodo> ligneGroupeTodos;	
+	private List<LigneGroupeTodo> ligneGroupeTodo;	
 	
 }
