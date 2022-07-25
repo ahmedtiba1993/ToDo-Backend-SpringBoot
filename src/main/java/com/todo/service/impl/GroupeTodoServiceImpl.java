@@ -131,4 +131,10 @@ public class GroupeTodoServiceImpl implements GroupeTodoService{
 		
 	}
 
+	@Override
+	public Integer totalGrTodo(Integer id) {
+		// TODO Auto-generated method stub
+		return groupeTodoRepository.totalGrTodo(id);
+	}
+
 }

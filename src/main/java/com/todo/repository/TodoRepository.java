@@ -1,5 +1,7 @@
 package com.todo.repository;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,6 +26,11 @@ public interface TodoRepository extends JpaRepository<Todo, Integer>{
 	
 	@Query(value ="select t from Todo t where idutilisateur= :id and important=true")
 	List<Todo> findAllImportant(@Param("id") Integer id);
-
-
+	
+	@Query(value="SELECT COUNT(*) FROM Todo t where idutilisateur= :id")
+	Integer totalTodo(@Param("id") Integer id);
+	
+	@Query(value = "SELECT t from Todo t where dateTodo = :today")
+	public List<Todo> findAllToday(@Param("today")Date todaysDate);
+	
 }

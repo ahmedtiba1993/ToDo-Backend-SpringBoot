@@ -60,4 +60,10 @@ public class GroupeTodoController implements GroupeTodoApi{
 		groupeTodoService.ajouterTodo(dto, id);
 	}
 
+	@Override
+	public Integer totalGrTodo(Integer id) {
+		// TODO Auto-generated method stub
+		return groupeTodoService.totalGrTodo(id);
+	}
+
 }

@@ -18,4 +18,7 @@ public interface GroupeTodoService {
 	List<GroupeTodoDto> findAllByUtilisateurId(Integer id);
 	
 	void ajouterTodo(TodoDto dto , Integer idGrTodo);
+	
+	Integer totalGrTodo(Integer id);
+
 }

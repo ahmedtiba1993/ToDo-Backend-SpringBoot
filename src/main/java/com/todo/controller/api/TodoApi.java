@@ -84,4 +84,10 @@ public interface TodoApi {
 	
 	@GetMapping(value = APP_ROOT + "/todos/findAllImportant/{idUtilisateur}")
 	List<TodoDto> findAllImportant(@PathVariable("idUtilisateur") Integer id);
+	
+	@GetMapping(value = APP_ROOT + "/todos/totalTodo/{id}")
+	Integer totalTodo(Integer id);
+	
+	@GetMapping(value = APP_ROOT + "/todos/findAllToday/{idUtilisateur}")
+	List<TodoDto> findAllToday(@PathVariable("idUtilisateur") Integer idUtilisateur);
 }
