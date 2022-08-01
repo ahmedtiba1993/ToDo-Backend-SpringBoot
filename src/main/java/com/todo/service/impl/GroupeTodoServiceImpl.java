@@ -130,11 +130,5 @@ public class GroupeTodoServiceImpl implements GroupeTodoService{
 		ligneGroupeTodoRepository.save(ligneGroupeTodoDto.toEntity(ligneGroupeTodoDto));
 		
 	}
-
-	@Override
-	public Integer totalGrTodo(Integer id) {
-		// TODO Auto-generated method stub
-		return groupeTodoRepository.totalGrTodo(id);
-	}
-
+	
 }

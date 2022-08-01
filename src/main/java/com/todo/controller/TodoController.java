@@ -91,18 +91,11 @@ public class TodoController implements TodoApi{
 		return todoService.findAllImportant(id);
 	}
 
-	@Override
-	public Integer totalTodo(Integer id) {
-		// TODO Auto-generated method stub
-		return todoService.totalTodo(id);
-	}
 
 	@Override
 	public List<TodoDto> findAllToday(Integer idUtilisateur) {
 		// TODO Auto-generated method stub
 		return todoService.findAllToday(idUtilisateur);
-	}
-
-	
+	}	
 
 }

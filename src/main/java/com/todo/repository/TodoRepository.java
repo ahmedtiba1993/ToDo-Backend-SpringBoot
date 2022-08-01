@@ -33,4 +33,9 @@ public interface TodoRepository extends JpaRepository<Todo, Integer>{
 	@Query(value = "SELECT t from Todo t where dateTodo = :today")
 	public List<Todo> findAllToday(@Param("today")Date todaysDate);
 	
+	@Query(value="SELECT COUNT(*) FROM Todo t where idutilisateur= :id and etatTodo = true")
+	Integer totalTodoEnded(@Param("id") Integer id);
+	
+	@Query(value="SELECT COUNT(*) FROM Todo t where idutilisateur= :id and etatTodo = false")
+	Integer totalTodoNotEnded(@Param("id") Integer id);
 }

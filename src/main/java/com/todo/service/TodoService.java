@@ -29,10 +29,9 @@ public interface TodoService {
 	
 	List<TodoDto> findAllImportant(Integer id);
 	
-	Integer totalTodo(Integer id);
 	
 	List<TodoDto> findAllToday(Integer id);
 	
-	
+
 	
 }

@@ -38,6 +38,5 @@ public interface GroupeTodoApi {
 	@PostMapping(value = APP_ROOT + "/groupetodo/ajoutertodo/{id}")
 	void ajouterTodo(@RequestBody TodoDto dto , @PathVariable("id") Integer id);
 	
-	@GetMapping(value = APP_ROOT + "/groupetodo/total/{id}")
-	Integer totalGrTodo(Integer id);
+	
 }

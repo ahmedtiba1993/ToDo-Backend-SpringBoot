@@ -191,19 +191,12 @@ public class TodoServiceImpl implements TodoService{
 				.collect(Collectors.toList());
 		}
 
-	@Override
-	public Integer totalTodo(Integer id) {
-		// TODO Auto-generated method stub
-		return todoRepository.totalTodo(id);
-	}
 
 	@Override
 	public List<TodoDto> findAllToday(Integer id) {
 		// TODO Auto-generated method stub
 		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		Date todaysDate = new Date();
-		System.out.println(todaysDate);
-		//System.out.println(format.format(todaysDate)); 2022-07-19 22:26:00.000000
 		return todoRepository.findAllByUtilisateurId(id).stream()
 				.map(TodoDto::fromEntity)
 				.filter(x -> format.format(x.getDateTodo()).equals(format.format(todaysDate)))
