@@ -54,10 +54,7 @@ public class ApplicationRequestFilter extends OncePerRequestFilter{
 				usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 			}
-			else {
-				
-			}
-		}
+					}
 		
 		//MDC.put("idEntreprise", idEntreprise);
 		chain.doFilter(request, response);
