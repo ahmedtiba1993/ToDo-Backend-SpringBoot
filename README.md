@@ -29,7 +29,7 @@ ToDo est un platforme qui vous permet de visualiser les tâches en cours , les t
 
 ![ToDo drawio](https://user-images.githubusercontent.com/72476268/210871080-2e4e6f86-38f8-48dc-8f39-9cd674c36fd8.png)
 
-## Partie fornt-end avec angular 13
+## Partie front-end avec angular 13
 https://github.com/ahmedtiba1993/ToDo-FrontEnd-Angular/blob/main/README.md
 
 
